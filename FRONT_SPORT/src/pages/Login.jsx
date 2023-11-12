@@ -32,8 +32,8 @@ return (
     <div className='bg_login flex items-center w-full h-[100dvh]'>
         <div className='content_login h-[80dvh] flex items-center justify-center bg-zinc-300 bg-opacity-30 rounded-[50px] backdrop-blur-[50px]'>
             <form onSubmit={formik.handleSubmit} className='flex flex-col gap-6 justify-center h-[70dvh] w-[55%]'>
-                <input type="email" name="email" id="email" className='p-4 bg-zinc-300 text-black text-opacity-50 bg-opacity-50 border border-cyan-950' placeholder='Email' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email} />
-                <input type="password" name="password" id="password" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.password} placeholder='Mot de passe' className='p-4 bg-zinc-300 bg-opacity-50 border text-black text-opacity-50 border-cyan-950' />
+                <input type="email" name="email" id="email" className='p-4 bg-zinc-300 text-black text-opacity-50 bg-opacity-50 placeholder-black border border-cyan-950' placeholder='Email' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email} />
+                <input type="password" name="password" id="password" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.password} placeholder='Mot de passe' className='p-4 bg-zinc-300 bg-opacity-50 border text-black text-opacity-50 border-cyan-950 placeholder-black ' />
                 <div className='w-full h-[10dvh] grid best-login'>
                     <article className='gap-2 flex flex-col'>
                         <Link to="/" className='text-white text-opacity-70 text-xl font-normal'>Mot de passe oublié</Link>
