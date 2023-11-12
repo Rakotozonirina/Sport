@@ -14,10 +14,10 @@ const user = {
         'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 const navigation = [
-    { name: 'Dashboard', current: true },
-    { name: 'Offres', current: false },
-    { name: 'Porte feuille', current: false },
-    { name: 'Service', current: false },
+    { name: 'Dashboard'},
+    { name: 'Offres'},
+    { name: 'Porte feuille'},
+    { name: 'Service' },
 ]
 const userNavigation = [
     { name: 'Votre Profile', href: '#' },
@@ -61,17 +61,11 @@ export default function Dashboard() {
                         <div className="hidden md:block">
                         <Tab.List className="ml-10 flex items-baseline  space-x-4">
                             {navigation.map((item) => (
-                            <Tab
-                                key={item.name}
-                                className={classNames(
-                                item.current
-                                    ? 'bg-gray-900 text-white'
-                                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                'rounded-md px-3 py-2 text-sm font-medium'
-                                )}
-                                aria-current={item.current ? 'page' : undefined}
-                            >
-                                {item.name}
+                            <Tab as={Fragment}>
+                                {({ selected }) => (
+                                <button key={item.name} className={ selected ? 'bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'}>
+                                    {item.name}
+                                </button>)}
                             </Tab>
                             ))}
                         </Tab.List>
