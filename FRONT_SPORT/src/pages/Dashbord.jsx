@@ -2,8 +2,9 @@ import { Fragment } from 'react'
 import { auth } from '../firebase'
 import { signOut } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Disclosure, Menu, Transition, Tab } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import Board from '../Dashboard/Board'
 import Logo from '../assets/logo.svg'
 
 const user = {
@@ -13,11 +14,10 @@ const user = {
         'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Acceuil', href: '#', current: false },
-    { name: 'Offres', href: '#', current: false },
-    { name: 'Porte feuille', href: '#', current: false },
-    { name: 'Service', href: '#', current: false },
+    { name: 'Dashboard', current: true },
+    { name: 'Offres', current: false },
+    { name: 'Porte feuille', current: false },
+    { name: 'Service', current: false },
 ]
 const userNavigation = [
     { name: 'Votre Profile', href: '#' },
@@ -43,16 +43,9 @@ export default function Dashboard() {
     }
     return (
         <>
-        {/*
-            This example requires updating your template:
-
-            ```
-            <html class="h-full bg-gray-100">
-            <body class="h-full">
-            ```
-        */}
+        <Tab.Group>
         <div className="min-h-full bg-cyan-950">
-            <Disclosure as="nav" className="bg-black bg-opacity-25">
+            <Disclosure as="nav" className="bg-black bg-opacity-25 fixed w-full shadow">
             {({ open }) => (
                 <>
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -66,11 +59,10 @@ export default function Dashboard() {
                         />
                         </div>
                         <div className="hidden md:block">
-                        <div className="ml-10 flex items-baseline space-x-4">
+                        <Tab.List className="ml-10 flex items-baseline  space-x-4">
                             {navigation.map((item) => (
-                            <a
+                            <Tab
                                 key={item.name}
-                                href={item.href}
                                 className={classNames(
                                 item.current
                                     ? 'bg-gray-900 text-white'
@@ -80,9 +72,9 @@ export default function Dashboard() {
                                 aria-current={item.current ? 'page' : undefined}
                             >
                                 {item.name}
-                            </a>
+                            </Tab>
                             ))}
-                        </div>
+                        </Tab.List>
                         </div>
                     </div>
                     <div className="hidden md:block">
@@ -204,15 +196,23 @@ export default function Dashboard() {
             )}
             </Disclosure>
 
-            <header className="bg-black bg-opacity-25 shadow">
-            <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                <h1 className="text-3xl font-bold tracking-tight text-cyan-500">Dashboard</h1>
-            </div>
-        </header>
-        <main className='h-[80dvh]'>
-          <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">{/* Your content */}</div>
-        </main>
+            <header className="bg-black bg-opacity-25 shadow fixed w-full top-[10%]">
+                <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                    <h1 className="text-3xl font-bold tracking-tight text-cyan-500">Dashboard</h1>
+                </div>
+            </header>
+            <main>
+                <Tab.Panels className='h-[100dvh] flex items-end'>
+                    <Tab.Panel className="mx-auto w-[90%] overflow-auto rounded-md bg-white mb-[1rem] h-[70dvh] py-6 sm:px-6 lg:px-8">
+                        <Board/>
+                    </Tab.Panel>
+                    <Tab.Panel className="mx-auto w-[90%] rounded-md bg-white mb-[1rem] h-[70dvh] py-6 sm:px-6 lg:px-8">Offres</Tab.Panel>
+                    <Tab.Panel className="mx-auto w-[90%] rounded-md bg-white mb-[1rem] h-[70dvh] py-6 sm:px-6 lg:px-8">Paiements</Tab.Panel>
+                    <Tab.Panel className="mx-auto w-[90%] rounded-md bg-white mb-[1rem] h-[70dvh] py-6 sm:px-6 lg:px-8">Services</Tab.Panel>
+                </Tab.Panels>
+            </main>
     </div>
+    </Tab.Group>
     </>
 )
 }
