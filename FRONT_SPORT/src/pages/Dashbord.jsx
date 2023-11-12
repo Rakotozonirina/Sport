@@ -14,15 +14,15 @@ const user = {
 }
 const navigation = [
     { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '#', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
-    { name: 'Reports', href: '#', current: false },
+    { name: 'Acceuil', href: '#', current: false },
+    { name: 'Offres', href: '#', current: false },
+    { name: 'Porte feuille', href: '#', current: false },
+    { name: 'Service', href: '#', current: false },
 ]
 const userNavigation = [
-    { name: 'Your Profile', href: '#' },
-    { name: 'Settings', href: '#',},
-    { name: 'Sign out', href: '#'},
+    { name: 'Votre Profile', href: '#' },
+    { name: 'Réglage', href: '#',},
+    { name: 'Déconnexion', href: '#'},
 ]
 
 function classNames(...classes) {
