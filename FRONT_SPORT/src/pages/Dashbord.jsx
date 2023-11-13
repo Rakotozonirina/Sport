@@ -100,7 +100,7 @@ export default function Dashboard() {
                             leaveFrom="transform opacity-100 scale-100"
                             leaveTo="transform opacity-0 scale-95"
                             >
-                            <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <Menu.Items className="absolute right-0 z-[99] mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                 {userNavigation.map((item) => (
                                 <Menu.Item key={item.name}>
                                     {({ active }) => (
@@ -190,7 +190,7 @@ export default function Dashboard() {
             )}
             </Disclosure>
 
-            <header className="bg-black bg-opacity-25 shadow fixed w-full top-[10%]">
+            <header className="bg-black bg-opacity-25 shadow pt-[4rem] w-full">
                 <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                     <h1 className="text-3xl font-bold tracking-tight text-cyan-500">Dashboard</h1>
                 </div>
